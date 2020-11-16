@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.3.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
+
+	<!-- kr.or.ddit 패키지 하위의 클래스중 @Controller 어노테이션이 붙은
+		 클래스를 스캔하여 스프링 빈으로 생성 -->
+		 
+	<context:component-scan base-package="kr.or.ddit" use-default-filters="false" >
+		<context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
+		
+		<!-- kr.or.ddit 패키지 하위의 클래스중 @ControllerAdvice 어노테이션이 붙은 클래스를 스캔하여 스프링 빈으로 생성 하기 위해 추가-->
+		<context:include-filter type="annotation" expression="org.springframework.web.bind.annotation.ControllerAdvice"/>
+	</context:component-scan>
+	
+	
+<!-- 	<bean id ="profileImgView" class="kr.or.ddit.mvc.view.ProfileImgView"/> -->
+<!-- 	<bean id ="profileDownloadView" class="kr.or.ddit.mvc.view.ProfileDownloadView"/> -->
+<!-- 	<bean id ="excelView" class="kr.or.ddit.mvc.view.ExcelDownloadView"/> -->
+	
+	<bean id ="jsonView" class="org.springframework.web.servlet.view.json.MappingJackson2JsonView"/>
+	
+	<!-- 우선순위 1. BeanName이랑 동일한 애가 있으면 bean으로 쓰겠다.-->
+	<bean class="org.springframework.web.servlet.view.BeanNameViewResolver">
+		<property name="order" value="1"/>
+	</bean>
+	
+	
+	<!-- tiles view resolver추가
+		 1. tiles 설정 작업 ==> TilesConfigurer를 통해 설정 (3.0버전)
+		 2. tiles view resolver 등록 -->
+	<bean id="tilesConfigurer" class="org.springframework.web.servlet.view.tiles3.TilesConfigurer">
+		<property name="definitions">
+			<list>
+				<value>classpath:kr/or/ddit/config/tiles/tiles-definition.xml</value>
+			</list>
+		</property>
+	</bean>
+	<!-- 버전주의 3으로 -->
+	<bean class="org.springframework.web.servlet.view.tiles3.TilesViewResolver">
+		<property name="viewClass" value="org.springframework.web.servlet.view.tiles3.TilesView"/>
+	 	 <!-- 우선순위가 높은 것먼저 실행하기때문에 value가 0인 것 먼저실행한다. -->
+		<property name="order" value="0"/>
+	</bean>
+
+
+	
+	<bean class ="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<!-- prefix : 접두어, suffix : 접미어
+			 Contoller가 리턴하는 문자열에 prefix, suffix를 적용하여 
+			 해당 경로의 파일로 응답을 생성
+		  
+			 LoginController.getView() ==> "login/view"
+		
+			  		prefix		   viewName		suffix
+			 "/WEB-INF/views/" + "login/view" + ".jsp"
+			 "/WEB-INF/views/login/view.jsp"
+			 
+			 즉, /WEB-INF/views/ 디렉토리 안에 있는 뷰의 파일이라는것을 알려주는 것이다.
+		  -->
+		  <!-- 우선순위가 높은 것먼저 실행하기때문에 value가 작은것 먼저실행한다. -->
+		<property name="order" value="2"/>
+		<property name="prefix" value="/WEB-INF/views/"></property>
+		<property name="suffix" value=".jsp"></property>
+	</bean>
+	
+	<!-- @Controller, @RequestMapping, 
+		HandlerMapping, HandlerAdapter, validation,
+		formatting conversion service 등 
+		spring mvc 패턴에 필요한 어노테이션, 엘레먼트 처리 
+		위의 어노테이션을 사용할시 아래 코드를 작성해주어야한다. -->	
+	<mvc:annotation-driven/>
+	
+	
+	<!-- spring이 자기가 처리하지 못하는요청에 대해 서버에 등록된 default servlet에게 위임을 한다.-->
+	<mvc:default-servlet-handler/>
+	
+	
+	<!-- 파일 업로드 처리를 위한 multipartResolver 설정 -->
+	<bean id ="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver"/>
+	
+	
+	
+	<!-- 정적자원 매핑 처리
+		1. url 단축을 목적
+		2. WEB-INF : 외부에서 접근불가능한 공간에 저장된 자원들 접근 매핑 
+		mapping ="임의의 가상경로" location="실제경로"
+	-->
+	<mvc:resources mapping="/resources/**" location="/WEB-INF/views/error/"></mvc:resources>
+	
+	
+	
+	
+	
+	<!-- localeResolver -->	
+<!-- 	<bean id="localeResolver" class="org.springframework.web.servlet.i18n.SessionLocaleResolver"></bean> -->
+	
+	<!-- locale변경 감지 interceptor -->
+	<mvc:interceptors>
+		<mvc:interceptor>
+			<mvc:mapping path="/**"/>
+			<bean class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor">
+				<property name="paramName" value="lang"></property>
+			</bean>
+		</mvc:interceptor>
+	</mvc:interceptors>
+	
+	
+	
+	
+	
+</beans>

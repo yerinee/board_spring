@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="board">
+  <!-- 게시판 목록전체 조회  -->
+  <select id="getLboard" resultType="LbVo">
+    SELECT * 
+    FROM lboard 
+  </select>
+  
+  <!-- 게시판 목록 활성화 조회 -->
+  <select id="getActiveLboard" resultType="LbVo">
+    SELECT * 
+    FROM lboard 
+    WHERE lbo_status = '1'
+  </select>
+  
+  <!-- 게시판에 해당하는 게시글 조회 -->
+  <select id="getboard" resultType="boVo" parameterType="map">
+	select *
+	from(
+	    select rownum rn , a.bo_id, 
+	    
+	    LPAD('└─', (LEVEL-1)*4 )  || a.bo_title as bo_title,  a.bo_con, a.bo_status, a.bo_date,a.lbo_id, a.mem_id,a.p_seq, a.gn, level 
+	    from (select *
+	            from board
+                where lbo_id =${lbo_id}  
+	            order by to_number(bo_id) desc) a
+        start with p_seq is null
+        connect by prior bo_id = p_seq
+        order SIBLINGS by gn desc, bo_id asc  )
+	where rn between (#{page} -1) * #{pageSize} +1 and #{page} * #{pageSize}
+  
+<!--     select * -->
+<!-- 	from( -->
+<!-- 	    select rownum rn , a.* -->
+<!-- 	    from (select *  -->
+<!-- 	            from board -->
+<!-- 	            where lbo_id = ${lbo_id} and  bo_status =1  -->
+<!-- 	            order by mem_id) a) -->
+<!-- 	where rn between (#{page} -1) * #{pageSize} +1 and #{page} * #{pageSize}  -->
+	
+  </select>
+  
+  <!-- 게시판 조회 -->
+  <select id="getlboardNm" resultType="lbVo" parameterType="map">
+    SELECT *
+    FROM lboard 
+    where lbo_id = ${lbo_id} 
+  </select>
+  
+  <!-- 게시글 수 -->
+  <select id="getboardCount" resultType="int" parameterType="map">
+    SELECT count(*)
+    FROM board 
+    where lbo_id = ${lbo_id}
+  </select>
+  
+  <!-- 게시판 수정 -->
+  <update id="updatelboard" parameterType="LbVo">
+  	UPDATE lboard 
+  	SET lbo_status = #{lbo_status}, lbo_nm = #{lbo_nm}
+ 	  		
+  	WHERE lbo_id = #{lbo_id}
+  </update>
+
+  <!-- 게시판 등록 -->
+  <insert id ="insertlboard" parameterType="LbVo">
+  	INSERT INTO lboard VALUES(lboard_seq.nextval,#{lbo_nm}, #{lbo_status})
+  
+  </insert>
+  
+  <!-- 해당 게시글 가져오기 -->
+  <select id ="getboarddetail" parameterType="String" resultType="boVo">
+  	SELECT * 
+    FROM board 
+    WHERE bo_id = #{bo_id}
+  </select>
+  
+  
+ <!-- 게시글 등록 -->
+  <insert id ="insertboard" parameterType="boVo">
+  
+  	<selectKey resultType="String" keyProperty="bo_id" order="BEFORE"> 
+  		select board_seq.nextval FROM dual
+  	</selectKey>
+  	
+  	INSERT INTO board VALUES(#{bo_id}, #{bo_title}, sysdate, #{bo_con}, #{bo_id}, 1, #{lbo_id}, #{mem_id}, '')
+  	
+
+  </insert>
+  
+  <!-- 파일 등록하기 -->
+  <insert id="insertfile" parameterType="fileVo">
+	  <selectKey resultType="String" keyProperty="file_id" order="BEFORE"> 
+	  		select file_seq.nextval FROM dual
+	  </selectKey>
+	  
+  	INSERT INTO files VALUES(#{file_id}, #{bo_id}, #{file_nm}, #{file_path})
+  </insert>
+  
+  <!-- 파일목록 가져오기 -->
+  <select id="getfiles" resultType="fileVo" parameterType="String">
+    SELECT * 
+    FROM files
+    WHERE bo_id = #{bo_id}
+  </select>
+  
+  <!-- 해당 파일 가져오기 -->
+  <select id="getfile" resultType="fileVo" parameterType="String">
+    SELECT * 
+    FROM files
+    WHERE file_id = #{file_id}
+  </select>
+  
+  <!-- 게시글 삭제 status 0으로-->
+  <update id="delboard" parameterType="String">
+  	UPDATE board 
+  	SET bo_status = 0 
+  	WHERE bo_id = #{bo_id}
+  </update>
+  
+  <!-- 게시글 답글 작성 -->
+  <insert id ="insertAnswer" parameterType="boVo">
+  
+  	<selectKey resultType="String" keyProperty="bo_id" order="BEFORE"> 
+  		select board_seq.nextval FROM dual
+  	</selectKey>
+  	
+  	INSERT INTO board VALUES(#{bo_id}, #{bo_title}, sysdate, #{bo_con}, #{gn}, 1, #{lbo_id}, #{mem_id}, #{p_seq}) 	
+  </insert>
+ 
+  <!-- 답글 파일 등록 -->
+  <insert id="insertAnswerfile" parameterType="fileVo">
+  	INSERT INTO files VALUES(file_seq.nextval, #{bo_id}, #{file_nm}, #{file_path})
+  </insert>
+  
+  <!-- 답글 등록 -->
+  <insert id="insertReply" parameterType="repVo">
+  	INSERT INTO reply VALUES(reply_seq.nextval, #{re_con}, sysdate, 1, #{bo_id}, #{mem_id})
+  </insert>
+
+  <!-- 댓글목록 가져오기 -->
+  <select id="getreply" resultType="repVo" parameterType="String">
+    SELECT * 
+    FROM reply
+    WHERE bo_id = #{bo_id}
+    order by re_date
+  </select>
+  
+  <!-- 답글 삭제 status 0으로-->
+  <update id="delreply" parameterType="String">
+  	UPDATE reply 
+  	SET re_status = 0 
+  	WHERE re_id = #{re_id}
+  </update>
+  
+  <!-- 게시글 수정 -->
+  <update id="updateboard" parameterType="boVo">
+  	UPDATE board 
+  	SET bo_title = #{bo_title}, bo_con= #{bo_con}
+  	WHERE bo_id = #{bo_id}
+  </update>
+  
+  <!-- 등록된 파일 삭제 -->
+  <delete id="deletefiles" parameterType="String">
+  	DELETE FROM files where file_id = #{file_id}
+  </delete>
+  
+  
+<!--   BO_ID -->
+<!-- BO_TITLE -->
+<!-- BO_DATE -->
+<!-- BO_CON -->
+<!-- GN -->
+<!-- BO_STATUS -->
+<!-- LBO_ID -->
+<!-- MEM_ID -->
+<!-- P_SEQ -->
+</mapper>
