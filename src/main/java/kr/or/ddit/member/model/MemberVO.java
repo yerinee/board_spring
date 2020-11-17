@@ -55,56 +55,52 @@ public class MemberVO {
 	}
 
 
-	@Override
-	public String toString() {
-		return "MemberVO [mem_id=" + mem_id + ", mem_pass=" + mem_pass + ", mem_nm=" + mem_nm + ", reg_dt=" + reg_dt
-				+ "]";
-	}
 
 
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((mem_id == null) ? 0 : mem_id.hashCode());
-		result = prime * result + ((mem_nm == null) ? 0 : mem_nm.hashCode());
-		result = prime * result + ((mem_pass == null) ? 0 : mem_pass.hashCode());
-		result = prime * result + ((reg_dt == null) ? 0 : reg_dt.hashCode());
-		return result;
-	}
 
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		MemberVO other = (MemberVO) obj;
-		if (mem_id == null) {
-			if (other.mem_id != null)
-				return false;
-		} else if (!mem_id.equals(other.mem_id))
-			return false;
-		if (mem_nm == null) {
-			if (other.mem_nm != null)
-				return false;
-		} else if (!mem_nm.equals(other.mem_nm))
-			return false;
-		if (mem_pass == null) {
-			if (other.mem_pass != null)
-				return false;
-		} else if (!mem_pass.equals(other.mem_pass))
-			return false;
-		if (reg_dt == null) {
-			if (other.reg_dt != null)
-				return false;
-		} else if (!reg_dt.equals(other.reg_dt))
-			return false;
-		return true;
-	}
+//	@Override
+//	public int hashCode() {
+//		final int prime = 31;
+//		int result = 1;
+//		result = prime * result + ((mem_id == null) ? 0 : mem_id.hashCode());
+//		result = prime * result + ((mem_nm == null) ? 0 : mem_nm.hashCode());
+//		result = prime * result + ((mem_pass == null) ? 0 : mem_pass.hashCode());
+//		result = prime * result + ((reg_dt == null) ? 0 : reg_dt.hashCode());
+//		return result;
+//	}
+//
+//
+//	@Override
+//	public boolean equals(Object obj) {
+//		if (this == obj)
+//			return true;
+//		if (obj == null)
+//			return false;
+//		if (getClass() != obj.getClass())
+//			return false;
+//		MemberVO other = (MemberVO) obj;
+//		if (mem_id == null) {
+//			if (other.mem_id != null)
+//				return false;
+//		} else if (!mem_id.equals(other.mem_id))
+//			return false;
+//		if (mem_nm == null) {
+//			if (other.mem_nm != null)
+//				return false;
+//		} else if (!mem_nm.equals(other.mem_nm))
+//			return false;
+//		if (mem_pass == null) {
+//			if (other.mem_pass != null)
+//				return false;
+//		} else if (!mem_pass.equals(other.mem_pass))
+//			return false;
+//		if (reg_dt == null) {
+//			if (other.reg_dt != null)
+//				return false;
+//		} else if (!reg_dt.equals(other.reg_dt))
+//			return false;
+//		return true;
+//	}
 
 
 	public MemberVO(String mem_id, String mem_pass, String mem_nm) {

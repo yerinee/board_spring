@@ -113,6 +113,12 @@
     	  id = "#file"+count
     	  $(id).prop("type", "file");
 		}
+
+		if(count >4){
+
+			$('#add').hide();
+		}
+			
 		
       })
 
@@ -129,13 +135,13 @@
 		</div>
 		<div class="col-sm-9 col-sm-offset-2 col-md-9 col-md-offset-2 main">
   
-	   		<form id="frm" action="${cp}/boardInsertServlet" method="post" enctype="multipart/form-data">
+	   		<form id="frm" action="${cp}/board/insertboard" method="post" enctype="multipart/form-data">
 	
 				<div class="form-group">
 					<label for="bo_title" class="col-sm-2 control-label">게시글 제목</label>
 					<div class="col-sm-10">
-						<input type="text" class="form-control" id="title" name="title" ><br><br>
-<%-- 						<input type="text" name="lbo_id" value="${lbo_id}"> --%>
+						<input type="text" class="form-control" id="title" name="bo_title" ><br><br>
+						<input type="hidden" name="lbo_id" value="${lbo_id}">
 						
 												
 					</div>
@@ -145,7 +151,7 @@
 				<div class="form-group">
 					<label for="userNm" class="col-sm-2 control-label">게시글 내용</label>
 					<div class="col-sm-10">
-						<textarea id ="summernote" name="content"></textarea><br><br>
+						<textarea id ="summernote" name="bo_con"></textarea><br><br>
 					</div>
 				</div>
 				<br><br>
@@ -154,11 +160,11 @@
 					<label for="file" class="col-sm-2 control-label">첨부파일</label>
 					<div id ="file" class="col-sm-10">
 					<input type="button" id="add" value="+">
-						<input type="file" id="file1" name="file1" >
-						<input type="hidden" id="file2" name="file2" >											
-						<input type="hidden" id="file3" name="file3" >											
-						<input type="hidden" id="file4" name="file4" >											
-						<input type="hidden" id="file5" name="file5" >											
+						<input type="file" id="file1" name="file" >
+						<input type="hidden" id="file2" name="file" >											
+						<input type="hidden" id="file3" name="file" >											
+						<input type="hidden" id="file4" name="file" >											
+						<input type="hidden" id="file5" name="file" >											
 					</div>
 				</div>
 				

@@ -174,14 +174,14 @@
 		</div>
 		<div class="col-sm-9 col-sm-offset-2 col-md-9 col-md-offset-2 main">
   
-	   		<form id="frm" action="${cp}/boardUpdate" method="post" enctype="multipart/form-data">
+	   		<form id="frm" action="${cp}/board/updateBoard" method="post" enctype="multipart/form-data">
 	
 				<div class="form-group">
 					<label for="bo_title" class="col-sm-2 control-label">게시글 제목</label>
 					<div class="col-sm-10">
-						<input type="text" class="form-control" id="title" name="title" value="${boardvo.bo_title}"><br><br>
-<%-- 						<input type="text" name="lbo_id" value="${boardvo.lbo_id}"> --%>
-<%-- 						<input type="text" name="bo_id" value="${boardvo.bo_id}"> --%>
+						<input type="text" class="form-control" id="title" name="bo_title" value="${boardvo.bo_title}"><br><br>
+						<input type="hidden" name="lbo_id" value="${boardvo.lbo_id}">
+						<input type="hidden" name="bo_id" value="${boardvo.bo_id}">
 												
 					</div>
 				</div>
@@ -190,7 +190,7 @@
 				<div class="form-group">
 					<label for="userNm" class="col-sm-2 control-label">게시글 내용</label>
 					<div class="col-sm-10">
-						<textarea id ="summernote" name="content"> ${boardvo.bo_con}</textarea><br><br>
+						<textarea id ="summernote" name="bo_con"> ${boardvo.bo_con}</textarea><br><br>
 					</div>
 				</div>
 				<br><br>
@@ -203,11 +203,11 @@
 							<input type="search" name="${files.file_id}" value="${files.file_nm}" disabled >
 							<input type="button" id="del" value="x"> <br>
 						</c:forEach>
-						<input type="hidden" id="file1" name="file1" >
-						<input type="hidden" id="file2" name="file2" >											
-						<input type="hidden" id="file3" name="file3" >											
-						<input type="hidden" id="file4" name="file4" >											
-						<input type="hidden" id="file5" name="file5" >		
+						<input type="hidden" id="file1" name="file" >
+						<input type="hidden" id="file2" name="file" >											
+						<input type="hidden" id="file3" name="file" >											
+						<input type="hidden" id="file4" name="file" >											
+						<input type="hidden" id="file5" name="file" >		
 						<input type="hidden" id="delfile" name="delfile" value="">									
 						
 					</div>

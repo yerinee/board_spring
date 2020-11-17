@@ -14,7 +14,7 @@
 	
 	<li class="active"><a href="${pageContext.request.contextPath }/board/lboard">게시판 생성 <span class="sr-only">(current)</span></a></li>
 	<c:forEach items="${lboardlist }" var="lboard">
-		<li class="active"><a href="${pageContext.request.contextPath }/board/eachboard?lbo_id='${lboard.lbo_id}'">${lboard.lbo_nm}</a></li>
+		<li class="active"><a href="${pageContext.request.contextPath }/board/boardlist?lbo_id='${lboard.lbo_id}'">${lboard.lbo_nm}</a></li>
 	</c:forEach>
 	
 </ul>

@@ -72,7 +72,7 @@
 										<td>[삭제된 게시글입니다.]</td>
 									</c:if>
 																	
-									<c:if test="${bolist.bo_status == 0 && bolist.level == 3}">
+									<c:if test="${bolist.bo_status == 0 && bolist.p_seq  != null}">
 										<td> 
 											<c:forEach var="i" begin="2" end ="${bolist.level }">
 												&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -87,7 +87,7 @@
 											&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 										</c:forEach>
 										
-										<a href="${cp }/boardServlet?bo_id=${bolist.bo_id }">${bolist.bo_title}</a></td>
+										<a href="${cp }/board/boardDetail?bo_id=${bolist.bo_id }">${bolist.bo_title}</a></td>
 									</c:if>
 									
 									
@@ -100,7 +100,7 @@
 						</table>
 					</div>
 					
-					<a href="${cp }/boardInsertServlet?lbo_id=${lboard.lbo_id}" class="btn btn-default pull-right">게시글 작성</a>
+					<a href="${cp }/board/insertboardview?lbo_id=${lboard.lbo_id}" class="btn btn-default pull-right">게시글 작성</a>
 <%-- 					page : ${page } --%>
 <%-- 					pages : ${pages } --%>
 <%-- 					pageSize : ${pageSize } --%>
@@ -109,8 +109,8 @@
 					<div class="text-center">
 						<ul class="pagination">	
 							<c:if test="${page > 1 && page <= pages}">
-								<li><span><a href="${pageContext.request.contextPath }/BoardlListServlet?page=1&lbo_id=${lboard.lbo_id}"> << </a> </span></li>									
-								<li><span><a href="${pageContext.request.contextPath }/BoardlListServlet?page=${page-1}&lbo_id=${lboard.lbo_id}"> < </a></span></li>									
+								<li><span><a href="${pageContext.request.contextPath }/board/boardlist?page=1&lbo_id=${lboard.lbo_id}"> << </a> </span></li>									
+								<li><span><a href="${pageContext.request.contextPath }/board/boardlist?page=${page-1}&lbo_id=${lboard.lbo_id}"> < </a></span></li>									
 							</c:if>
 			
 							
@@ -122,14 +122,14 @@
 										<li class="active"><span>${i }</span></li>										
 									</c:when>
 									<c:otherwise>                                                                                                                                                                                                                                                                                                                                   
-										<li><a href="${pageContext.request.contextPath }/BoardlListServlet?page=${i}&lbo_id=${lboard.lbo_id}">${i}</a></li>
+										<li><a href="${pageContext.request.contextPath }/board/boardlist?page=${i}&lbo_id=${lboard.lbo_id}">${i}</a></li>
 									</c:otherwise>
 									
 								</c:choose>
 							</c:forEach>
 							<c:if test="${page >= 1 && page < pages}">
-								<li><span><a href="${pageContext.request.contextPath }/BoardlListServlet?page=${page+1}&lbo_id=${lboard.lbo_id}"> > </a></span></li>									
-								<li><span><a href="${pageContext.request.contextPath }/BoardlListServlet?page=${pages}&lbo_id=${lboard.lbo_id}"> >> </a></span></li>									
+								<li><span><a href="${pageContext.request.contextPath }/board/boardlist?page=${page+1}&lbo_id=${lboard.lbo_id}"> > </a></span></li>									
+								<li><span><a href="${pageContext.request.contextPath }/board/boardlist?page=${pages}&lbo_id=${lboard.lbo_id}"> >> </a></span></li>									
 							</c:if>			
 
 						</ul>

@@ -42,52 +42,52 @@ public class FileVo {
 	public void setFile_path(String file_path) {
 		this.file_path = file_path;
 	}
-	@Override
-	public String toString() {
-		return "FileVo [file_id=" + file_id + ", bo_id=" + bo_id + ", file_nm=" + file_nm + ", file_path=" + file_path
-				+ "]";
-	}
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((bo_id == null) ? 0 : bo_id.hashCode());
-		result = prime * result + ((file_id == null) ? 0 : file_id.hashCode());
-		result = prime * result + ((file_nm == null) ? 0 : file_nm.hashCode());
-		result = prime * result + ((file_path == null) ? 0 : file_path.hashCode());
-		return result;
-	}
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		FileVo other = (FileVo) obj;
-		if (bo_id == null) {
-			if (other.bo_id != null)
-				return false;
-		} else if (!bo_id.equals(other.bo_id))
-			return false;
-		if (file_id == null) {
-			if (other.file_id != null)
-				return false;
-		} else if (!file_id.equals(other.file_id))
-			return false;
-		if (file_nm == null) {
-			if (other.file_nm != null)
-				return false;
-		} else if (!file_nm.equals(other.file_nm))
-			return false;
-		if (file_path == null) {
-			if (other.file_path != null)
-				return false;
-		} else if (!file_path.equals(other.file_path))
-			return false;
-		return true;
-	}
+//	@Override
+//	public String toString() {
+//		return "FileVo [file_id=" + file_id + ", bo_id=" + bo_id + ", file_nm=" + file_nm + ", file_path=" + file_path
+//				+ "]";
+//	}
+//	@Override
+//	public int hashCode() {
+//		final int prime = 31;
+//		int result = 1;
+//		result = prime * result + ((bo_id == null) ? 0 : bo_id.hashCode());
+//		result = prime * result + ((file_id == null) ? 0 : file_id.hashCode());
+//		result = prime * result + ((file_nm == null) ? 0 : file_nm.hashCode());
+//		result = prime * result + ((file_path == null) ? 0 : file_path.hashCode());
+//		return result;
+//	}
+//	@Override
+//	public boolean equals(Object obj) {
+//		if (this == obj)
+//			return true;
+//		if (obj == null)
+//			return false;
+//		if (getClass() != obj.getClass())
+//			return false;
+//		FileVo other = (FileVo) obj;
+//		if (bo_id == null) {
+//			if (other.bo_id != null)
+//				return false;
+//		} else if (!bo_id.equals(other.bo_id))
+//			return false;
+//		if (file_id == null) {
+//			if (other.file_id != null)
+//				return false;
+//		} else if (!file_id.equals(other.file_id))
+//			return false;
+//		if (file_nm == null) {
+//			if (other.file_nm != null)
+//				return false;
+//		} else if (!file_nm.equals(other.file_nm))
+//			return false;
+//		if (file_path == null) {
+//			if (other.file_path != null)
+//				return false;
+//		} else if (!file_path.equals(other.file_path))
+//			return false;
+//		return true;
+//	}
 
 	
 	

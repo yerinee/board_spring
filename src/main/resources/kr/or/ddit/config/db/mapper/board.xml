@@ -67,7 +67,7 @@
 
   <!-- 게시판 등록 -->
   <insert id ="insertlboard" parameterType="LbVo">
-  	INSERT INTO lboard VALUES(lboard_seq.nextval,#{lbo_nm}, #{lbo_status})
+  	INSERT INTO lboard VALUES(lboard_seq.nextval, #{lbo_nm}, #{lbo_status})
   
   </insert>
   

@@ -48,7 +48,7 @@ $(document).ready(function(){
 	$('#delbtn1').on('click', function(){
 		if(confirm("정말 삭제하시겠습니까??") == true){
 
-			document.location="${cp}/boardDeleteServlet?bo_id=${boardvo.bo_id}&lbo_id=${boardvo.lbo_id}"
+			document.location="${cp}/board/delboard?bo_id=${boardvo.bo_id}&lbo_id=${boardvo.lbo_id}"
 		}	
 	})
 
@@ -158,7 +158,7 @@ $(document).ready(function(){
 							<c:forEach items="${filelist }" var="files" begin ="0" varStatus="vs" end="${filelist.size() }" step="1" >
 <%-- 								<input id ="profileDownBtn" type="button" class="btn btn-default" value ="다운로드 ${memberVo.realfilename }"/> --%>
 							
-								<a href="${cp }/FileDownloadServlet?file_id=${files.file_id}"><input id ="files${vs.index}"  type="button" class="btn btn-default" name="${files.file_id}" value="${files.file_nm} 다운로드" ></a><br><br>
+								<a href="${cp }/board/fileDown?file_id=${files.file_id}"><input id ="files${vs.index}"  type="button" class="btn btn-default" name="${files.file_id}" value="${files.file_nm} 다운로드" ></a><br><br>
 							</c:forEach>
 							
 						
@@ -170,11 +170,11 @@ $(document).ready(function(){
 						<label for="btn" class="col-sm-2 control-label"></label>
 						<div id = "sebumenu">
 							<c:if test= "${boardvo.mem_id == S_MEMBER.mem_id}">
-								<a href = "${cp}/boardUpdate?bo_id=${boardvo.bo_id}"><input id ="editbtn" type="button" class="btn btn-default" value ="수정"/></a>
+								<a href = "${cp}/board/updateBoardview?bo_id=${boardvo.bo_id}"><input id ="editbtn" type="button" class="btn btn-default" value ="수정"/></a>
 								<input id ="delbtn1" type="button" class="btn btn-default" value ="삭제"/>							
 <%-- 								<a href = "${cp}/boardDeleteServlet?bo_id=${boardvo.bo_id}&lbo_id=${boardvo.lbo_id}"><input id ="delbtn" type="button" class="btn btn-default" value ="삭제"/></a>								 --%>
 							</c:if>
-							<a href = "${cp}/boardAnswerinsert?bo_id=${boardvo.bo_id}&lbo_id=${boardvo.lbo_id}&gn=${boardvo.gn}"><input id ="replybtn" type="button" class="btn btn-default" value ="답글"/></a>
+							<a href = "${cp}/board/answerview?bo_id=${boardvo.bo_id}&lbo_id=${boardvo.lbo_id}&gn=${boardvo.gn}"><input id ="replybtn" type="button" class="btn btn-default" value ="답글"/></a>
 						</div>
 					</div>
 
@@ -184,7 +184,7 @@ $(document).ready(function(){
 				</form>
 			</div>
 			<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-				<form class="form-horizontal" role="form" id ="frm" method="post" action="${cp }/ReplyInsert">	
+				<form class="form-horizontal" role="form" id ="frm" method="post" action="${cp }/board/insertreply">	
 					<div class="form-group">
 					<hr>
 						<label for="pass" class="col-sm-2 control-label">댓글</label>
@@ -192,11 +192,11 @@ $(document).ready(function(){
 							<input type="hidden" name="bo_id" value="${boardvo.bo_id}">
 							<c:forEach items="${replylist }" var="replylist">
 								<c:if test= "${replylist.re_status == 1}">								
-	 								<textarea disabled class ="reply_con" >${replylist.re_con }</textarea>
+	 								<textarea disabled class ="reply_con" >${replylist.re_con}</textarea>
 	 								[ ${replylist.mem_id } / <fmt:formatDate value="${replylist.re_date }" pattern="yyyy-MM-dd HH:mm"/> ] 	
 	 								
 	 								<c:if test= "${boardvo.mem_id == S_MEMBER.mem_id && replylist.re_status == 1}">								
-										<a href = "${cp}/ReplyDeleteServlet?re_id=${replylist.re_id}&bo_id=${replylist.bo_id}"><input id ="delbtn2" type="button" class="btn btn-default" value ="삭제"/></a>								
+										<a href = "${cp}/board/delreply?re_id=${replylist.re_id}&bo_id=${replylist.bo_id}"><input id ="delbtn2" type="button" class="btn btn-default" value ="삭제"/></a>								
 									</c:if>							
 								</c:if>		 														
 								<c:if test= "${replylist.re_status == 0}">								

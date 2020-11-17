@@ -51,59 +51,59 @@ public class ReplyVo {
 		return "ReplyVo [re_id=" + re_id + ", re_con=" + re_con + ", re_date=" + re_date + ", re_status=" + re_status
 				+ ", bo_id=" + bo_id + ", mem_id=" + mem_id + "]";
 	}
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((bo_id == null) ? 0 : bo_id.hashCode());
-		result = prime * result + ((mem_id == null) ? 0 : mem_id.hashCode());
-		result = prime * result + ((re_con == null) ? 0 : re_con.hashCode());
-		result = prime * result + ((re_date == null) ? 0 : re_date.hashCode());
-		result = prime * result + ((re_id == null) ? 0 : re_id.hashCode());
-		result = prime * result + ((re_status == null) ? 0 : re_status.hashCode());
-		return result;
-	}
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		ReplyVo other = (ReplyVo) obj;
-		if (bo_id == null) {
-			if (other.bo_id != null)
-				return false;
-		} else if (!bo_id.equals(other.bo_id))
-			return false;
-		if (mem_id == null) {
-			if (other.mem_id != null)
-				return false;
-		} else if (!mem_id.equals(other.mem_id))
-			return false;
-		if (re_con == null) {
-			if (other.re_con != null)
-				return false;
-		} else if (!re_con.equals(other.re_con))
-			return false;
-		if (re_date == null) {
-			if (other.re_date != null)
-				return false;
-		} else if (!re_date.equals(other.re_date))
-			return false;
-		if (re_id == null) {
-			if (other.re_id != null)
-				return false;
-		} else if (!re_id.equals(other.re_id))
-			return false;
-		if (re_status == null) {
-			if (other.re_status != null)
-				return false;
-		} else if (!re_status.equals(other.re_status))
-			return false;
-		return true;
-	}
+//	@Override
+//	public int hashCode() {
+//		final int prime = 31;
+//		int result = 1;
+//		result = prime * result + ((bo_id == null) ? 0 : bo_id.hashCode());
+//		result = prime * result + ((mem_id == null) ? 0 : mem_id.hashCode());
+//		result = prime * result + ((re_con == null) ? 0 : re_con.hashCode());
+//		result = prime * result + ((re_date == null) ? 0 : re_date.hashCode());
+//		result = prime * result + ((re_id == null) ? 0 : re_id.hashCode());
+//		result = prime * result + ((re_status == null) ? 0 : re_status.hashCode());
+//		return result;
+//	}
+//	@Override
+//	public boolean equals(Object obj) {
+//		if (this == obj)
+//			return true;
+//		if (obj == null)
+//			return false;
+//		if (getClass() != obj.getClass())
+//			return false;
+//		ReplyVo other = (ReplyVo) obj;
+//		if (bo_id == null) {
+//			if (other.bo_id != null)
+//				return false;
+//		} else if (!bo_id.equals(other.bo_id))
+//			return false;
+//		if (mem_id == null) {
+//			if (other.mem_id != null)
+//				return false;
+//		} else if (!mem_id.equals(other.mem_id))
+//			return false;
+//		if (re_con == null) {
+//			if (other.re_con != null)
+//				return false;
+//		} else if (!re_con.equals(other.re_con))
+//			return false;
+//		if (re_date == null) {
+//			if (other.re_date != null)
+//				return false;
+//		} else if (!re_date.equals(other.re_date))
+//			return false;
+//		if (re_id == null) {
+//			if (other.re_id != null)
+//				return false;
+//		} else if (!re_id.equals(other.re_id))
+//			return false;
+//		if (re_status == null) {
+//			if (other.re_status != null)
+//				return false;
+//		} else if (!re_status.equals(other.re_status))
+//			return false;
+//		return true;
+//	}
 	
 	
 }

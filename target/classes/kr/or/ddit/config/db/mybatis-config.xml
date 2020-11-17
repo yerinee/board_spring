@@ -7,8 +7,7 @@
 	
 		<typeAlias type="kr.or.ddit.member.model.MemberVO" alias="MemberVo"/>		
 		<typeAlias type="kr.or.ddit.board.model.LboardVo" alias="LbVo"/>	
-		<typeAlias type="kr.or.ddit.board.model.BoardVo" alias="boVo"/>			
-		<typeAlias type="kr.or.ddit.member.model.PageVO" alias="pageVo"/>		
+		<typeAlias type="kr.or.ddit.board.model.BoardVo" alias="boVo"/>				
 		<typeAlias type="kr.or.ddit.board.model.FileVo" alias="fileVo"/>		
 		<typeAlias type="kr.or.ddit.board.model.ReplyVo" alias="repVo"/>		
 		

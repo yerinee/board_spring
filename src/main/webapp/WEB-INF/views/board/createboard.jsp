@@ -52,7 +52,7 @@
 // 				$('#frm').submit();
 					
 
-					var uri ="/updateLboardServlet?lbo_id=" + lbo_id +"&lbo_status=" + lbo_status +"&lbo_nm="+lbo_nm;		
+					var uri ="${cp}/board/updateLboard?lbo_id=" + lbo_id +"&lbo_status=" + lbo_status +"&lbo_nm="+lbo_nm;		
 					var enc = encodeURI(uri);
 // 					console.log(enc); 
 					document.location = enc;
@@ -87,7 +87,7 @@
 					<h2 class="sub-header">게시판 생성</h2>
 					
 					<div class="table-responsive">
-						<form method ="post" action="${cp}/insertLboardServlet">
+						<form method ="post" action="${cp}/board/createLboard">
 							<table class="table table-striped">					
 								<tr>
 									<td><strong>게시판이름</strong></td>
@@ -106,16 +106,16 @@
 							<br><br>
 							<h2 class="sub-header">게시판 목록</h2>
 							<c:forEach items="${lbolist }" var="lboard">
-								<form method ="post" action="${cp}/updateLboardServlet">
+								<form method ="post" action="${cp}/board/updateLboard">
 									<table class="table table-striped">
 											<tr >
 												<td><strong>게시판이름</strong></td>
-												<td><input type="text" name = "nm" value="${lboard.lbo_nm }">
-													<input name ="id" type="hidden" value="${lboard.lbo_id }">
+												<td><input type="text" name = "lbo_nm" value="${lboard.lbo_nm }">
+													<input name ="lbo_id" type="hidden" value="${lboard.lbo_id }">
 		<!-- 										<input id ="lb_nm" type="hidden" value=""> -->
 		<!-- 										<input id ="lb_status" type="hidden" value=""></td> -->
 												<td>											
-													<select name ="status">													
+													<select name ="lbo_status">													
 														<c:choose>
 															<c:when test="${lboard.lbo_status == '0'}">
 																<option value="0" selected>미사용</option>	

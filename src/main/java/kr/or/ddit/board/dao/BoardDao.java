@@ -134,12 +134,12 @@ public class BoardDao implements BoardDaoI {
 //		}
 		
 		// 변경이 발생된 트랜잭션은 명시적으로 끝내주어야한다.
-//		if(insertCnt == 1) { // 정상적으로 insert가 되었으면 commit
+		if(insertCnt == 1) { // 정상적으로 insert가 되었으면 commit
 //			sqlSession.commit();
 			bo_id = boardvo.getBo_id();
 //		}else { // insert가 되지 않았으면 rollback
 //			sqlSession.rollback();
-//		}
+		}
 		
 //		sqlSession.close();
 		
@@ -213,12 +213,12 @@ public class BoardDao implements BoardDaoI {
 //		}
 		
 		// 변경이 발생된 트랜잭션은 명시적으로 끝내주어야한다.
-//		if(insertCnt == 1) { // 정상적으로 insert가 되었으면 commit
+		if(insertCnt == 1) { // 정상적으로 insert가 되었으면 commit
 //			sqlSession.commit();
 			bo_id = boardvo.getBo_id();
 //		}else { // insert가 되지 않았으면 rollback
 //			sqlSession.rollback();
-//		}
+		}
 		
 //		sqlSession.close();
 		

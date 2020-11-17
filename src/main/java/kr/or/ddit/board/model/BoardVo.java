@@ -18,18 +18,18 @@ public class BoardVo {
 		
 	}
 	
-	public BoardVo(String bo_id, String bo_title, String bo_con, int gn, String bo_status, String lbo_id, String mem_id,
-			String p_seq) {
-		super();
-		this.bo_id = bo_id;
-		this.bo_title = bo_title;
-		this.bo_con = bo_con;
-		this.gn = gn;
-		this.bo_status = bo_status;
-		this.lbo_id = lbo_id;
-		this.mem_id = mem_id;
-		this.p_seq = p_seq;
-	}
+//	public BoardVo(String bo_id, String bo_title, String bo_con, int gn, String bo_status, String lbo_id, String mem_id,
+//			String p_seq) {
+//		super();
+//		this.bo_id = bo_id;
+//		this.bo_title = bo_title;
+//		this.bo_con = bo_con;
+//		this.gn = gn;
+//		this.bo_status = bo_status;
+//		this.lbo_id = lbo_id;
+//		this.mem_id = mem_id;
+//		this.p_seq = p_seq;
+//	}
 	
 	public String getBo_id() {
 		return bo_id;
@@ -101,81 +101,81 @@ public class BoardVo {
 				+ p_seq + ", level=" + level + "]";
 	}
 
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((bo_con == null) ? 0 : bo_con.hashCode());
-		result = prime * result + ((bo_date == null) ? 0 : bo_date.hashCode());
-		result = prime * result + ((bo_id == null) ? 0 : bo_id.hashCode());
-		result = prime * result + ((bo_status == null) ? 0 : bo_status.hashCode());
-		result = prime * result + ((bo_title == null) ? 0 : bo_title.hashCode());
-		result = prime * result + gn;
-		result = prime * result + ((lbo_id == null) ? 0 : lbo_id.hashCode());
-		result = prime * result + ((level == null) ? 0 : level.hashCode());
-		result = prime * result + ((mem_id == null) ? 0 : mem_id.hashCode());
-		result = prime * result + ((p_seq == null) ? 0 : p_seq.hashCode());
-		return result;
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		BoardVo other = (BoardVo) obj;
-		if (bo_con == null) {
-			if (other.bo_con != null)
-				return false;
-		} else if (!bo_con.equals(other.bo_con))
-			return false;
-		if (bo_date == null) {
-			if (other.bo_date != null)
-				return false;
-		} else if (!bo_date.equals(other.bo_date))
-			return false;
-		if (bo_id == null) {
-			if (other.bo_id != null)
-				return false;
-		} else if (!bo_id.equals(other.bo_id))
-			return false;
-		if (bo_status == null) {
-			if (other.bo_status != null)
-				return false;
-		} else if (!bo_status.equals(other.bo_status))
-			return false;
-		if (bo_title == null) {
-			if (other.bo_title != null)
-				return false;
-		} else if (!bo_title.equals(other.bo_title))
-			return false;
-		if (gn != other.gn)
-			return false;
-		if (lbo_id == null) {
-			if (other.lbo_id != null)
-				return false;
-		} else if (!lbo_id.equals(other.lbo_id))
-			return false;
-		if (level == null) {
-			if (other.level != null)
-				return false;
-		} else if (!level.equals(other.level))
-			return false;
-		if (mem_id == null) {
-			if (other.mem_id != null)
-				return false;
-		} else if (!mem_id.equals(other.mem_id))
-			return false;
-		if (p_seq == null) {
-			if (other.p_seq != null)
-				return false;
-		} else if (!p_seq.equals(other.p_seq))
-			return false;
-		return true;
-	}
+//	@Override
+//	public int hashCode() {
+//		final int prime = 31;
+//		int result = 1;
+//		result = prime * result + ((bo_con == null) ? 0 : bo_con.hashCode());
+//		result = prime * result + ((bo_date == null) ? 0 : bo_date.hashCode());
+//		result = prime * result + ((bo_id == null) ? 0 : bo_id.hashCode());
+//		result = prime * result + ((bo_status == null) ? 0 : bo_status.hashCode());
+//		result = prime * result + ((bo_title == null) ? 0 : bo_title.hashCode());
+//		result = prime * result + gn;
+//		result = prime * result + ((lbo_id == null) ? 0 : lbo_id.hashCode());
+//		result = prime * result + ((level == null) ? 0 : level.hashCode());
+//		result = prime * result + ((mem_id == null) ? 0 : mem_id.hashCode());
+//		result = prime * result + ((p_seq == null) ? 0 : p_seq.hashCode());
+//		return result;
+//	}
+//
+//	@Override
+//	public boolean equals(Object obj) {
+//		if (this == obj)
+//			return true;
+//		if (obj == null)
+//			return false;
+//		if (getClass() != obj.getClass())
+//			return false;
+//		BoardVo other = (BoardVo) obj;
+//		if (bo_con == null) {
+//			if (other.bo_con != null)
+//				return false;
+//		} else if (!bo_con.equals(other.bo_con))
+//			return false;
+//		if (bo_date == null) {
+//			if (other.bo_date != null)
+//				return false;
+//		} else if (!bo_date.equals(other.bo_date))
+//			return false;
+//		if (bo_id == null) {
+//			if (other.bo_id != null)
+//				return false;
+//		} else if (!bo_id.equals(other.bo_id))
+//			return false;
+//		if (bo_status == null) {
+//			if (other.bo_status != null)
+//				return false;
+//		} else if (!bo_status.equals(other.bo_status))
+//			return false;
+//		if (bo_title == null) {
+//			if (other.bo_title != null)
+//				return false;
+//		} else if (!bo_title.equals(other.bo_title))
+//			return false;
+//		if (gn != other.gn)
+//			return false;
+//		if (lbo_id == null) {
+//			if (other.lbo_id != null)
+//				return false;
+//		} else if (!lbo_id.equals(other.lbo_id))
+//			return false;
+//		if (level == null) {
+//			if (other.level != null)
+//				return false;
+//		} else if (!level.equals(other.level))
+//			return false;
+//		if (mem_id == null) {
+//			if (other.mem_id != null)
+//				return false;
+//		} else if (!mem_id.equals(other.mem_id))
+//			return false;
+//		if (p_seq == null) {
+//			if (other.p_seq != null)
+//				return false;
+//		} else if (!p_seq.equals(other.p_seq))
+//			return false;
+//		return true;
+//	}
 	
 	
 	
