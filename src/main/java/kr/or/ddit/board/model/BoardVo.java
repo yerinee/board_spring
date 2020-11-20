@@ -43,9 +43,9 @@ public class BoardVo {
 	public void setBo_title(String bo_title) {
 		this.bo_title = bo_title;
 	}
-	public Date getBo_date() {
-		return bo_date;
-	}
+//	public Date getBo_date() {
+//		return bo_date;
+//	}
 	public void setBo_date(Date bo_date) {
 		this.bo_date = bo_date;
 	}
@@ -61,9 +61,9 @@ public class BoardVo {
 	public void setGn(int gn) {
 		this.gn = gn;
 	}
-	public String getBo_status() {
-		return bo_status;
-	}
+//	public String getBo_status() {
+//		return bo_status;
+//	}
 	public void setBo_status(String bo_status) {
 		this.bo_status = bo_status;
 	}
@@ -86,9 +86,9 @@ public class BoardVo {
 		this.p_seq = p_seq;
 	}
 
-	public String getLevel() {
-		return level;
-	}
+//	public String getLevel() {
+//		return level;
+//	}
 
 	public void setLevel(String level) {
 		this.level = level;

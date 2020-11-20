@@ -63,7 +63,7 @@ public class BoardDaoTest extends ModelTestConfig {
 		List<BoardVo> bolist = boardDao.getboard(map);
 		
 		/***Then***/
-		assertEquals(6, bolist.size());
+		assertEquals(10, bolist.size());
 	}
 	
 	// 해당 게시판vo 가져오기 테스트
@@ -97,16 +97,16 @@ public class BoardDaoTest extends ModelTestConfig {
 		
 		
 		/***When***/
-		int count = boardDao.getboardCount( map);
+		int count = boardDao.getboardCount(map);
 		
 		/***Then***/
-		assertEquals(6, count);
+		assertEquals(62, count);
 	}
 	//게시판 수정
 	@Test
 	public void updateLboardTest() {
 		/***Given***/		
-		LboardVo lbovo = new LboardVo("11", "질문게시판22", "1");
+		LboardVo lbovo = new LboardVo("3", "질문게시판22", "1");
 		
 		/***When***/
 		int updateCnt = boardDao.updateLboard(lbovo);
@@ -155,7 +155,7 @@ public class BoardDaoTest extends ModelTestConfig {
 		String insertbo_id = boardDao.insertBoard(boardvo);
 		
 		/***Then***/
-		assertEquals("20", insertbo_id);
+		assertEquals("140", insertbo_id);
 	}
 	
 	// 파일 등록
@@ -175,14 +175,14 @@ public class BoardDaoTest extends ModelTestConfig {
 	@Test
 	public void getfilesTest() {
 		/***Given***/
-		String bo_id = "134";
+		String bo_id = "93";
 		
 		
 		/***When***/
 		List<FileVo> filelist = boardDao.getfiles(bo_id);
 		
 		/***Then***/
-		assertEquals(3, filelist.size());
+		assertEquals(1, filelist.size());
 	}
 
 	// 게시글 삭제 테스트
@@ -206,14 +206,14 @@ public class BoardDaoTest extends ModelTestConfig {
 		boardvo.setBo_title("반갑습니다.");
 		boardvo.setLbo_id("1");
 		boardvo.setMem_id("brown");
-		boardvo.setP_seq("19");
-		boardvo.setGn(20);
+		boardvo.setP_seq("10");
+		boardvo.setGn(10);
 		
 		/***When***/
 		String insertbo_id = boardDao.insertAnswer(boardvo);
 				
 		/***Then***/
-		assertEquals("21", insertbo_id);
+		assertEquals("140", insertbo_id);
 	}
 	
 	// 게시글 답글 파일 등록 테스트
@@ -307,7 +307,7 @@ public class BoardDaoTest extends ModelTestConfig {
 	@Test
 	public void delfilesTest() {
 		/***Given***/		
-		String file_id = "2";
+		String file_id = "3";
 		
 		/***When***/
 		int delCnt = boardDao.delfiles(file_id);

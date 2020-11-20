@@ -22,15 +22,15 @@ public class ReplyVo {
 	public void setRe_con(String re_con) {
 		this.re_con = re_con;
 	}
-	public Date getRe_date() {
-		return re_date;
-	}
+//	public Date getRe_date() {
+//		return re_date;
+//	}
 	public void setRe_date(Date re_date) {
 		this.re_date = re_date;
 	}
-	public String getRe_status() {
-		return re_status;
-	}
+//	public String getRe_status() {
+//		return re_status;
+//	}
 	public void setRe_status(String re_status) {
 		this.re_status = re_status;
 	}

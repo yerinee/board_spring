@@ -35,9 +35,9 @@ public class MemberVO {
 	}
 
 
-	public String getMem_nm() {
-		return mem_nm;
-	}
+//	public String getMem_nm() {
+//		return mem_nm;
+//	}
 
 
 	public void setMem_nm(String mem_nm) {
@@ -45,9 +45,9 @@ public class MemberVO {
 	}
 
 
-	public Date getReg_dt() {
-		return reg_dt;
-	}
+//	public Date getReg_dt() {
+//		return reg_dt;
+//	}
 
 
 	public void setReg_dt(Date reg_dt) {

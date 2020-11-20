@@ -22,7 +22,6 @@ import kr.or.ddit.board.model.FileVo;
 import kr.or.ddit.board.model.LboardVo;
 import kr.or.ddit.board.model.ReplyVo;
 import kr.or.ddit.board.service.BoardServiceI;
-import kr.or.ddit.fileupload.FileUpdloadUtil;
 import kr.or.ddit.member.model.MemberVO;
 
 
@@ -56,7 +55,7 @@ public class BoardController {
 
 		int insertCnt = boardService.insertLboard(lbovo);
 		
-		if(insertCnt >0) { // 1건이 입력되었을때 : 정상
+		if(insertCnt == 1) { // 1건이 입력되었을때 : 정상
 			
 			List<LboardVo> lbolist = boardService.getActivelboard();
 			session.setAttribute("lboardlist", lbolist);
@@ -180,7 +179,7 @@ public class BoardController {
 		
 			if(files.get(i).getSize()>0) {
 				String filename = UUID.randomUUID().toString();
-				String extension = FileUpdloadUtil.getExtenstion(files.get(i).getOriginalFilename());
+				String extension = files.get(i).getOriginalFilename().split("\\.")[1];
 				String filepath = "E:\\profile\\" + filename +"."+ extension;
 				File uploadFile = new File(filepath);
 				try {
@@ -246,7 +245,10 @@ public class BoardController {
 		
 			if(files.get(i).getSize()>0) {
 				String filename = UUID.randomUUID().toString();
-				String extension = FileUpdloadUtil.getExtenstion(files.get(i).getOriginalFilename());
+				
+				
+				
+				String extension = files.get(i).getOriginalFilename().split("\\.")[1];
 				String filepath = "E:\\profile\\" + filename +"."+ extension;
 				File uploadFile = new File(filepath);
 				try {
@@ -312,7 +314,7 @@ public class BoardController {
 		
 			if(files.get(i).getSize()>0) {
 				String filename = UUID.randomUUID().toString();
-				String extension = FileUpdloadUtil.getExtenstion(files.get(i).getOriginalFilename());
+				String extension = files.get(i).getOriginalFilename().split("\\.")[1];
 				String filepath = "E:\\profile\\" + filename +"."+ extension;
 				File uploadFile = new File(filepath);
 				try {
